@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
+.upcoming {
+    /* color: red; */
+    font-family: "Playwrite GB S";
+    color: rgb(0, 0, 0);
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+.upcoming::after {
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 15%;
+    left: 43%;
+    transform: translateX(-43% -43%);
+    bottom: -1rem;
+    background-color: red;
+}

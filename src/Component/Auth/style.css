@@ -1,0 +1,12 @@
+/* Label color when focused */
+.textFieldInput label.Mui-focused {
+  color: black;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Tangerine:wght@400;700&display=swap');
+
+
+.text_name {
+  font-family: 'Tangerine';
+  
+}
