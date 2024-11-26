@@ -1,0 +1,56 @@
+/* Define the hover effect for image zoom */
+.card-media-hover {
+    transition: transform 1s ease;
+}
+
+/* Increase the image size by 10% when hovered */
+.card-media-hover:hover {
+    transform: scale(1.1);
+}
+
+/* UPDATE PAGE */
+.textFieldInput1 label.Mui-focused {
+    color: black;
+}
+
+/* Border color on hover */
+.textFieldInput1 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(0, 0, 0);
+}
+
+/* Border color when focused */
+.textFieldInput1 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(0, 0, 0);
+}
+
+/* CREATE PAGE CSS */
+
+.textFieldContainer {
+    background-color: transparent;
+}
+
+/* Text color */
+.textFieldInput .MuiOutlinedInput-root {
+    color: white !important;
+    border-color: white !important;
+}
+
+/* Border color */
+.textFieldInput .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(0, 0, 0) !important;
+}
+
+/* Border color on hover */
+.textFieldInput .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: lightgray !important;
+}
+
+/* Border color when focused */
+.textFieldInput .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: white !important;
+}
+
+/* Label color */
+.textFieldLabel .MuiInputLabel-root {
+    color: rgb(255, 255, 255) !important;
+}

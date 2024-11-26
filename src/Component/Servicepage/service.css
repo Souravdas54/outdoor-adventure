@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+.typography-pjct {
+    color: rgb(0, 0, 0);
+    display: block;
+    position: relative;
+}
+
+/* First Heading */
+.firsttext::after {
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -0.5rem;
+    background-color: red;
+}
+
+/* WATER */
+.tp1::after {
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 15%;
+    left: 13%;
+    transform: translateX(-50%);
+    bottom: -0.5rem;
+    background-color: red;
+}
+
+/* WINTER */
+.tp2::after {
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 15%;
+    left: 14%;
+    transform: translateX(-50%);
+    bottom: -0.5rem;
+    background-color: red;
+}
+
+/* CAMPING */
+.tp3::after {
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 15%;
+    left: 10%;
+    transform: translateX(-50%);
+    bottom: -0.5rem;
+    background-color: red;
+}

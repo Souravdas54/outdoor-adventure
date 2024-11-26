@@ -1,0 +1,16 @@
+.typography{
+    color: rgb(0, 0, 0);
+    display: block;
+    position: relative;
+    text-align: center;
+}
+.typography::after{
+    content: "";
+    position: absolute;
+    height: 0.25rem;
+    width: 10%;
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: -0.25rem;
+    background-color: red;
+}
