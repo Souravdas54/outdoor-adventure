@@ -261,7 +261,7 @@ function Header() {
             {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, }} /> */}
 
             <Box sx={{ display: 'flex', flexDirection: 'row', textAlign: 'left', }}>
-              <CardMedia component='img' src='/logo/icons8-adventure-96.PNg' sx={{
+              <CardMedia component='img' src='/logo/icons8-adventure-96.png' sx={{
                 display: { xs: 'flex', md: 'none' },
                 width: '38px', height: '38px', backgroundSize: 'cover', justifyContent: 'flex-start', alignItems: 'flex-start',
               }} />
