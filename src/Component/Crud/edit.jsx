@@ -55,7 +55,7 @@ export default function Update() {
                     label="title"
                     variant="outlined"
                     margin="normal"
-                    {...register("title", { required: "Enter your title" })}
+                    {...register("title", { required: "Enter your title",})}
                     error={!!errors.title}
                     helperText={errors.title ? errors.title.message : ""}
                 />

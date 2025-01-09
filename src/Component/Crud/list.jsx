@@ -205,7 +205,7 @@ export default function List() {
 
                                     <WarningAmberIcon sx={{ fontSize: '6rem', color: 'red' }} />
                                     <Typography variant='h5' >Products not available.</Typography>
-                                    <Typography >No internet connection</Typography>
+                                    <Typography >Please upload the product.</Typography>
                                 </Box>
                             )
                             }

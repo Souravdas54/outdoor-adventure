@@ -36,7 +36,7 @@ export default function Profile() {
         <ThemeProvider theme={theme}>
             <Box sx={{
                 width: '100%',
-                height: { xs: '80vh', sm: '85vh', md: '95vh', lg: '95vh', xl: '100vh' },
+                height: { xs: 'auto', sm: 'auto', md: 'auto', lg: 'auto', xl: 'auto' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -50,13 +50,13 @@ export default function Profile() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent:'center',
+                    justifyContent: 'center',
                     maxWidth: { xs: '90%', sm: '80%', md: '60%', lg: '50%', xl: '40%' },
                     p: 3,
-                    mx:2,
+                    mx: 2,
                     color: 'white',
-                    border:'3px solid white',
-                    maxHeight:'auto'
+                    // border:'3px solid white',
+                    maxHeight: 'auto'
                 }}>
                     <CardMedia
                         component="img"
@@ -70,11 +70,12 @@ export default function Profile() {
                             mb: 3,
                         }}
                     />
-                    <CardContent sx={{ width:{md:'90%',lg:'100%',xl:'100%'},
-                   justifyContent:'center',alignItems:'center',
-                    textAlign: 'center',
-                    //  ml: { xs: 0, sm: 0, md: 16, lg: 17, xl: 18 }
-                      }}>
+                    <CardContent sx={{
+                        width: { md: '90%', lg: '100%', xl: '100%' },
+                        justifyContent: 'center', alignItems: 'center',
+                        textAlign: 'center',
+                        //  ml: { xs: 0, sm: 0, md: 16, lg: 17, xl: 18 }
+                    }}>
                         {isLoading && <Typography>Loading...</Typography>}
                         {isError && <Typography>Error fetching profile details.</Typography>}
                         {!isLoading && !isError && profileDetails && (
@@ -89,7 +90,7 @@ export default function Profile() {
                                         mb: 1,
                                     }}
                                 >
-                                 {profileDetails.first_name} {profileDetails.last_name}
+                                    {profileDetails.first_name} {profileDetails.last_name}
                                 </Typography>
                                 <Typography
                                     variant="body1"
@@ -98,12 +99,12 @@ export default function Profile() {
                                         fontWeight: '500',
                                         // fontFamily: "Tangerine",
                                         fontFamily: 'poppins',
-                                        color:'white',
-                                        textAlign:'center'
+                                        color: 'white',
+                                        textAlign: 'center'
 
                                     }}
                                 >
-                                  {profileDetails.email}  
+                                    {profileDetails.email}
                                 </Typography>
                             </>
                         )}

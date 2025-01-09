@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react';
 import './style.css'
 import { createTheme, ThemeProvider } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
-
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 // FONT STYLE //
 const theme = createTheme({
@@ -46,7 +46,8 @@ export default function Register() {
 
 
 
-  const [profile_pic, setProfile_pic] = useState('');
+  const [profile_pic, setProfile_pic] = useState(null);
+  const [errorMsg, seterrorMsg] = useState('');
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -79,13 +80,26 @@ export default function Register() {
     }
   };
 
+  const handleimagefile = (e) => {
+    const imgfile = e.target.files[0];
+    if (imgfile?.type && !imgfile?.type.startsWith('image/')) {
+      seterrorMsg('Error: Unsupported format. Please upload a .jpg, .png, .jpeg image.');
+      setProfile_pic(null);
+    } else {
+      seterrorMsg('');
+      setProfile_pic(imgfile);
+
+
+    }
+  }
+
   const handleOK = () => {
     handleClose();
     window.location.reload();
 
   }
 
- 
+
   useEffect(() => {
     if (redirectLogin) {
       navigate(redirectLogin);
@@ -229,15 +243,23 @@ export default function Register() {
               required
             />
 
-            <Button variant="contained" component="label" sx={{ mt: 2 }} startIcon={<UploadFileIcon />}>
-              Upload Image
+            <Button variant="contained" component="label" sx={{ mt: 2 }}
+              startIcon={profile_pic ? <CheckCircleIcon color='inherit' /> : <UploadFileIcon color='inherit' />}>
+              {profile_pic ? 'Uploaded successfully' : 'Upload Image'}
+
               <input
                 hidden
                 type="file"
                 accept="image/*"
-                onChange={(e) => setProfile_pic(e.target.files[0])}
+                // onChange={(e) => setProfile_pic(e.target.files[0])}
+                onChange={handleimagefile}
+                required
+
               />
+            
             </Button>
+            {errorMsg && <Typography variant='h6' color='error' sx={{ fontSize: '0.81rem' }}>{errorMsg}</Typography>}
+
 
             <Button type="submit" variant='contained' sx={{ mt: 3, width: { xs: '70%', sm: '40%' } }}>
               {
