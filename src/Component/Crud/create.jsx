@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 
 export default function CreateProduct() {
 
@@ -37,9 +39,18 @@ export default function CreateProduct() {
         console.log('Form data', data);
         console.log("image", image);
 
+        const trimmedTitle = data.title.trim();
+        const trimmedDescription = data.description.trim();
+
+        if (!trimmedTitle || !trimmedDescription) {
+            enqueueSnackbar('Title and Description cannot be empty or just spaces.', { variant: 'error' });
+            return; // Stop the form submission
+        }
         let formData = new FormData();
-        formData.append("title", data.title);
-        formData.append('description', data.description);
+        // formData.append("title", data.title);
+        // formData.append('description', data.description);
+        formData.append("title", trimmedTitle);
+        formData.append('description', trimmedDescription);
         formData.append('image', image);
         setLoading(true);
 
@@ -58,8 +69,16 @@ export default function CreateProduct() {
     // IMAGE SET - SUBMIT //
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setImg(file);
-        setImagePreview(URL.createObjectURL(file));
+        if (file) {
+            const validImagettype = ['image/jpeg', 'image/png', 'image/webp'];
+            if (validImagettype.includes(file.type)) {
+                setImg(file);
+                setImagePreview(URL.createObjectURL(file));
+            } else {
+                enqueueSnackbar('Please select a valid image file (JPEG, PNG, or JPG).', { variant: 'error' });
+            }
+        }
+
     };
 
 
@@ -113,8 +132,10 @@ export default function CreateProduct() {
                                 type="text"
                                 size="small"
                                 className="textFieldContainer textFieldInput textFieldLabel"
+                                error={!!errors.title}
+                                helperText={errors.title?.message}
 
-                                {...register('title', { required: 'enteer title' })}
+                                {...register('title', { required: 'enter title' })}
                                 sx={{
                                     "& .MuiInputLabel-root": {
                                         color: "white",
@@ -147,6 +168,8 @@ export default function CreateProduct() {
                                 multiline
                                 rows={4}
                                 className="textFieldContainer textFieldInput textFieldLabel"
+                                error={!!errors.description}
+                                helperText={errors.description?.message}
 
                                 {...register('description', { required: 'enter description' })}
 
@@ -204,9 +227,9 @@ export default function CreateProduct() {
                             <Button
                                 variant="contained"
                                 component="label"
-                                startIcon={<UploadFileIcon />}
-                            >
-                                Upload Image
+                                startIcon={image ? <CheckCircleIcon color='inherit' /> : <UploadFileIcon color='inherit' />}
+                            >{image ? 'Uploaded successfully' : 'Upload Image'}
+                                {/* Upload Image */}
                                 <input
                                     hidden
                                     type="file"

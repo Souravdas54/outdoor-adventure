@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import './crud.css'
 import { editProductData, editProductList } from '../../Redux/crudSlice';
 import { createTheme, ThemeProvider } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 
 // Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -32,10 +34,11 @@ export default function Updateproduct() {
 
   const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm();
   const watchImage = watch('image');
   const newImage = watchImage && watchImage[0] ? URL.createObjectURL(watchImage[0]) : null;
 
+  const [errorfildmsg, seterrorfildmsg] = useState(null);
 
   useEffect(() => {
     dispatch(editProductList(id))
@@ -43,6 +46,7 @@ export default function Updateproduct() {
 
   useEffect(() => {
     if (editList !== null) {
+      console.log("Editing product", editList);
       setValue('title', editList.title);
       setValue('description', editList.description);
       setImagePreview(`https://wtsacademy.dedicateddevelopers.us/uploads/product/${editList.image}` || '');
@@ -51,10 +55,15 @@ export default function Updateproduct() {
   }, [setValue, editList])
 
   const onSubmit = (data) => {
+    if (data.description.length < 3 || data.description.length < 3) {
+      // console.log();
+      seterrorfildmsg("Title must be at least 3 characters")
+      return;
+    }
     const formData = new FormData();
     formData.append('id', id);
-    formData.append('title', data.title);
-    formData.append('description', data.description);
+    formData.append('title', data?.title);
+    formData.append('description', data?.description);
     // formData.append('image', data.image[0]);
 
     if (data.image[0]) {
@@ -125,9 +134,9 @@ export default function Updateproduct() {
                 bgcolor: 'transparent', width: "1px", fontSize: '13px'
               }}
             ></Button>
-            <Grid2 container spacing={2} component='form' onSubmit={handleSubmit(onSubmit)} sx={{ flexDirection: 'column' ,textAlign:'justify'}}>
+            <Grid2 container spacing={2} component='form' onSubmit={handleSubmit(onSubmit)} sx={{ flexDirection: 'column', textAlign: 'justify' }}>
               <Grid2 item xs={12} sx={{ width: '100%' }}>
-              <Typography sx={{textAlign:'justify',pl:1}} >Title</Typography>
+                <Typography sx={{ textAlign: 'justify', pl: 1 }} >Title</Typography>
                 <TextField
                   className="textField1 textFieldInput1"
                   // label="Title"
@@ -136,11 +145,13 @@ export default function Updateproduct() {
                   {...register('title', { required: true })}
                   onChange={(e) => setValue('title', e.target.value)}
                   sx={{ width: { xs: '15.5rem', sm: '20.95rem', md: '25.5rem', lg: '30rem', xl: '36.25rem' }, }}
+                  error={!!errorfildmsg || !!errors.title}
+                  helperText={errorfildmsg || errors.title?.message}
 
                 />
               </Grid2>
               <Grid2 item xs={12}>
-              <Typography sx={{textAlign:'justify',pl:1}} >Description</Typography>
+                <Typography sx={{ textAlign: 'justify', pl: 1 }} >Description</Typography>
                 <TextField
                   className="textField1 textFieldInput1"
                   // label="Description"
@@ -151,6 +162,8 @@ export default function Updateproduct() {
                   {...register('description', { required: true })}
                   onChange={(e) => setValue('description', e.target.value)}
                   sx={{ width: { xs: '15.5rem', sm: '20.95rem', md: '25.5rem', lg: '30rem', xl: '36.25rem' }, }}
+                  error={!!errorfildmsg || !!errors.description}
+                  helperText={errorfildmsg || errors.description?.message}
 
                 />
               </Grid2>
@@ -158,9 +171,9 @@ export default function Updateproduct() {
                 <Button
                   variant="contained"
                   component="label"
-                  startIcon={<UploadFileIcon />}
-                >
-                  Upload Image
+                  startIcon={newImage ? <CheckCircleIcon color='inherit' /> : <UploadFileIcon color='inherit' />}
+                >{newImage ? 'Uploaded successfully' : 'Upload Image'}
+                  {/* Upload Image */}
                   <input
                     hidden
                     type="file"
@@ -189,11 +202,11 @@ export default function Updateproduct() {
 
           {/* Image Preview - Right Side */}
 
-          <Grid2 item xs={12} md={6}>
+          <Grid2 item xs={12} md={6} sx={{ mt: { xs: 3, sm: 3, md: 3, lg: 1 } }}>
             <Typography>Previous Image</Typography>
             {imagePreview ? (
               <CardMedia
-                sx={{ width: { xs: '100%', md: 300 }, height: 'auto', objectFit: 'cover', mt: 2 }}
+                sx={{ width: { xs: '100%', md: 300 }, height: 150, objectFit: 'cover', mt: 2 }}
                 component="img"
                 height="200"
                 image={imagePreview}
@@ -204,15 +217,15 @@ export default function Updateproduct() {
                 No Existing Image Available
               </Box>
             )}
-            <Typography sx={{ mt: 2 }}>Current Image</Typography>
+            <Typography sx={{ my: 1 }}>Current Image</Typography>
             {newImage ? (
               <CardMedia
-                sx={{ width: { xs: '100%', md: 300 }, height: 'auto', objectFit: 'cover', mt: 2 ,mb:{md:5,lg:0}}}
+                sx={{ width: { xs: '100%', md: 300 }, height: 200, objectFit: 'cover', mt: 2, mb: { md: 5, lg: 0 } }}
                 component="img"
                 height="200"
                 image={newImage}
                 alt="New Product Image Preview"
-                
+
 
               />
             ) : (

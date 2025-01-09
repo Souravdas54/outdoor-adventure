@@ -262,7 +262,7 @@ function Header() {
 
             <Box sx={{ display: 'flex', flexDirection: 'row', textAlign: 'left', }}>
               <CardMedia component='img' src='/logo/icons8-adventure-96.PNg' sx={{
-                display: { xs: 'flex',sm:'flex', md: 'none' },
+                display: { xs: 'flex', md: 'flex' },
                 width: '38px', height: '38px', backgroundSize: 'cover', justifyContent: 'flex-start', alignItems: 'flex-start',
               }} />
               <Box>

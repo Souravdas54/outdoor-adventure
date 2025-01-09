@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid2, TextField, Button, Typography } from '@mui/material';
 import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material';
-
+import { useForm } from 'react-hook-form';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 const theme = createTheme({
     typography: { fontFamily: 'Poppins, Arial, sans-serif' }
 })
 export default function Contact() {
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+        setOpen(true);
+        reset();
+    }
+    // Alert message //
+    const [open, setOpen] = useState(false);
+
+    // const handleClick = () => {
+    //     setOpen(true);
+    // };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{
@@ -16,7 +41,7 @@ export default function Contact() {
                 <Grid2 container spacing={4}>
 
                     {/* Left side: Contact Form */}
-                    <Grid2 item xs={12} md={6}>
+                    <Grid2 item xs={12} md={6} component='form' onSubmit={handleSubmit(onSubmit)}>
                         <Typography
                             variant="h5"
                             gutterBottom
@@ -30,13 +55,26 @@ export default function Contact() {
                             variant="outlined"
                             margin="normal"
                             sx={{ fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' } }}
+                            {...register('name', { required: 'Name is required' })}
+                            error={!!errors.name}
+                            helperText={errors.name?.message}
                         />
                         <TextField
                             fullWidth
                             label="Email"
                             variant="outlined"
                             margin="normal"
+                            type='email'
                             sx={{ fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' } }}
+                            {...register('email', {
+                                required: 'Email is required',
+                                pattern: {
+                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: 'Enter a valid email'
+                                }
+                            })}
+                            error={!!errors.email}
+                            helperText={errors.email?.message}
                         />
                         <TextField
                             fullWidth
@@ -46,10 +84,15 @@ export default function Contact() {
                             rows={4}
                             margin="normal"
                             sx={{ fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' } }}
+                            {...register('message', { required: 'Message is required' })}
+                            error={!!errors.message}
+                            helperText={errors.message?.message}
                         />
                         <Button
                             variant="contained"
                             color="primary"
+                            type='submit'
+                            // onClick={handleClick}
                             sx={{
                                 mt: 2,
                                 width: {
@@ -62,6 +105,16 @@ export default function Contact() {
                         >
                             Submit
                         </Button>
+                        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                            <Alert
+                                onClose={handleClose}
+                                severity="success"
+                                variant="filled"
+                                sx={{ width: '100%' }}
+                            >
+                                This is a success Alert inside a Snackbar!
+                            </Alert>
+                        </Snackbar>
                     </Grid2>
 
                     {/* Right side: Contact Information */}
