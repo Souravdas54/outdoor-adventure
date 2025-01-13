@@ -46,6 +46,12 @@ export default function CreateProduct() {
             enqueueSnackbar('Title and Description cannot be empty or just spaces.', { variant: 'error' });
             return; // Stop the form submission
         }
+
+          if(!image){
+            enqueueSnackbar('Please upload an image.', { variant: 'error' });
+            return;
+        }
+        
         let formData = new FormData();
         // formData.append("title", data.title);
         // formData.append('description', data.description);
