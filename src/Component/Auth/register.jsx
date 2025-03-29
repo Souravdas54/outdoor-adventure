@@ -81,17 +81,18 @@ export default function Register() {
   };
 
   const handleimagefile = (e) => {
-    const imgfile = e.target.files[0];
-    if (imgfile?.type && !imgfile?.type.startsWith('image/')) {
-      seterrorMsg('Error: Unsupported format. Please upload a .jpg, .png, .jpeg image.');
-      setProfile_pic(null);
-    } else {
+    const file = e.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+  
+    if (file && allowedTypes.includes(file.type)) {
+      setProfile_pic(file);
       seterrorMsg('');
-      setProfile_pic(imgfile);
-
-
+    } else {
+      seterrorMsg(' Unsupported format: Only JPG, JPEG, and PNG files are allowed.');
+      setProfile_pic(null);
     }
-  }
+  };
+  
 
   const handleOK = () => {
     handleClose();
