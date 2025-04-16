@@ -17,6 +17,8 @@ export default function Update() {
 
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
+    const [fileError, setFileError] = useState("");
+    
     useEffect(() => {
         dispatch(editProductList(id));
     }, [id])
@@ -31,7 +33,21 @@ export default function Update() {
         }
     }, [editList, setValue]);
 
+
+    const validateFileType = (file) => {
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+        return allowedTypes.includes(file.type);
+    };
+
     const onSubmit = (data) => {
+        const file = data.image[0];
+        if (!validateFileType(file)) {
+            setFileError("Only JPG, JPEG, and PNG files are allowed.");
+            return;
+        }
+
+        setFileError("");
+
         const updatedData = { ...data, id };
         dispatch(editProductData(updatedData, id));
         setOpenSnackbar(true);
@@ -45,6 +61,8 @@ export default function Update() {
         }
         setOpenSnackbar(false);
     };
+
+   
 
     return (
         <Container maxWidth="sm">
@@ -67,6 +85,7 @@ export default function Update() {
                     {...register("description", { required: "Enter your description" })}
                     error={!!errors.description}
                     helperText={errors.description ? errors.description.message : ""}
+                   
                 />
                 <TextField
                     fullWidth

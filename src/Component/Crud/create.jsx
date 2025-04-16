@@ -47,7 +47,7 @@ export default function CreateProduct() {
             return; // Stop the form submission
         }
 
-          if(!image){
+        if(!image){
             enqueueSnackbar('Please upload an image.', { variant: 'error' });
             return;
         }
@@ -242,7 +242,9 @@ export default function CreateProduct() {
                                     hiden
                                     accept="image/*"
                                     onChange={handleImageChange}
+                                   
                                 />
+
                             </Button>
 
                         </Grid2>

@@ -80,6 +80,19 @@ export default function Register() {
     }
   };
 
+  // const handleimagefile = (e) => {
+  //   const imgfile = e.target.files[0];
+  //   if (imgfile?.type && !imgfile?.type.startsWith('image/')) {
+  //     seterrorMsg('Error: Unsupported format. Please upload a .jpg, .png, .jpeg image.');
+  //     setProfile_pic(null);
+  //   } else {
+  //     seterrorMsg('');
+  //     setProfile_pic(imgfile);
+
+
+  //   }
+  // }
+
   const handleimagefile = (e) => {
     const file = e.target.files[0];
     const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
