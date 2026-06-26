@@ -1,70 +1,167 @@
-# Getting Started with Create React App
+# 🏕️ Outdoor Adventure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern and responsive Outdoor Adventure web application built with **React.js**. The application allows users to explore adventure destinations while providing secure authentication and complete product management functionality. Registered users can create, view, update, and delete adventure destinations through an intuitive dashboard.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌐 Live Demo
 
-### `npm start`
+**Live Website:** https://outdoor-adventure-five.vercel.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📖 Project Overview
 
-### `npm test`
+Outdoor Adventure is a responsive web application designed for adventure and travel enthusiasts. The application showcases outdoor destinations and allows authenticated users to manage adventure products with full CRUD (Create, Read, Update, Delete) functionality.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To ensure application security, users must register or log in before accessing protected pages such as **Create** and **List**. Unauthorized users attempting to access these pages are redirected to the login page with a notification.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# ✨ Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Responsive UI for Desktop, Tablet, and Mobile
+* Beautiful Home Page with Adventure Banner
+* Upcoming Tours & Destinations Section
+* Upcoming Events Section
+* Contact Page
+* User Registration
+* Secure User Login
+* Protected Routes
+* Authentication using Token
+* Product Creation
+* Product Listing
+* Product Details Page
+* Update Existing Product
+* Delete Product
+* Image Upload Support
+* User Profile Menu
+* Toast & Snackbar Notifications
+* Form Validation using React Hook Form
+* State Management with Redux Toolkit
+* API Integration using Axios
+* Clean and Modern Material UI Design
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+# 🔐 Protected Routes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The following pages are accessible **only after successful Login/Register**.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Create Product
+* Product List
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If an unauthenticated user tries to access these pages, the application displays the following message:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> **"Please register or login to access this page."**
 
-## Learn More
+and redirects the user to the Login page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 🖼️ Application Pages
 
-### Code Splitting
+* Home
+* About
+* Contact
+* Service
+* Register
+* Login
+* Create Product
+* Product List
+* Product Details
+* Update Product
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+# 🛠️ Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Frontend
 
-### Making a Progressive Web App
+* React.js
+* React Router DOM
+* Redux Toolkit
+* React Redux
+* Material UI (MUI)
+* Styled Components
+* React Hook Form
+* Axios
+* React Toastify
+* Notistack
+* React Material UI Carousel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+# 📦 Packages Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+@mui/material
+@mui/icons-material
+@emotion/react
+@emotion/styled
+styled-components
+react-router-dom
+react-redux
+@reduxjs/toolkit
+axios
+react-hook-form
+react-toastify
+notistack
+react-material-ui-carousel
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# 🔄 CRUD Functionality
 
-### `npm run build` fails to minify
+Authenticated users can
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Create Adventure Products
+* View Product List
+* View Product Details
+* Update Existing Product
+* Delete Products
+
+---
+
+# 🔑 Authentication Flow
+
+* User Registration
+* User Login
+* Token Stored after Login
+* Protected Routes
+* Logout Functionality
+* Profile Menu
+
+---
+
+# 📱 Responsive Design
+
+The application is fully responsive and optimized for
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile Devices
+
+---
+
+# 💡 Highlights
+
+* Modern Material UI Interface
+* Responsive Layout
+* Redux State Management
+* Protected Routing
+* Secure Authentication
+* Form Validation
+* Image Upload
+* Product CRUD Operations
+* Reusable Components
+* API Driven Architecture
+
+---
+
+# 👨‍💻 Author
+
+**Sourav Das**
+
+Aspiring MERN Stack Developer
